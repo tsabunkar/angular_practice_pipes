@@ -1,16 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    Filter  <input type="text"
+        name="nameControl" 
+        [(ngModel)]="filteredStatus"
+        >
+        <hr>
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers"
+          *ngFor="let server of servers | filter_custom_pipe:filteredStatus:'status' "
           [ngClass]="getStatusClasses(server)">
           <span
             class="badge">
             {{ server.status }}
           </span>
-          <strong>{{ server.name }}</strong> | {{ server.instanceType | uppercase }} | {{ server.started | date }}
+          <!-- <strong>{{ server.name | shorten_custompipe }}</strong>  -->
+          <strong>{{ server.name | shorten_custompipe: '10' }}</strong> 
+          - {{ server.instanceType | uppercase }}  
+          <!-- - {{ server.started | date: 'fullDate'  | uppercase}} -->
+          <!-- date pipe is builtin paramterized pipe -->
+          - {{ server.started | date: 'fullDate'  | uppercase}}
+          <!--  
+            above example is chaining of pipes, order is important bcoz- parsing on pipes takes place from
+          left to Right (in system perspective) - i.e-uppercase pipe is applied to datepipe then, 
+          datepipe is applied to server.stated string 
+          [RIGHT]   {{ server.started | date: 'fullDate'  | uppercase}}   [LEFT]
+          -->
+
         </li>
       </ul>
     </div>
