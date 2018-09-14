@@ -10,6 +10,10 @@
         may lead to performance issue so if we want to inforce this functionality to work then we shld 
         add property - pure: false in @Pipe decorator-->
         <button class="btn btn-primary" (click)="onAddServer()">AddSever</button>
+        <br>
+        <br>
+        <h4>App Status : {{appStatus | async }}</h4>
+        <!-- async is builtin pipe, async pipe works with promise , observables-subcribe, etc -->
         <hr>
       <ul class="list-group">
         <li
