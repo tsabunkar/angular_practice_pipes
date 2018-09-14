@@ -1,7 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter_custom_pipe'
+  name: 'filter_custom_pipe',
+  pure : false
+  //this pure is bydefault true, that while be filtering the data/row but if we want to add a new row on click
+  // of btn while doing filtering then we need to make this property -> pure : false
+  //Note: This will cause performance degradtion
 })
 export class FilterPipe implements PipeTransform {
 

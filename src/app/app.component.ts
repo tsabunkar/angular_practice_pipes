@@ -44,5 +44,14 @@ export class AppComponent {
     };
   }
 
+  onAddServer() {
+    this.servers.push({
+      instanceType: 'small',
+      name: 'On Add Server clicked',
+      status: 'stable',
+      started: new Date(15, 1, 2017)
+    })
+  }
+
 
 }

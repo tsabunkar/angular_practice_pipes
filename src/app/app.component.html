@@ -5,6 +5,11 @@
         name="nameControl" 
         [(ngModel)]="filteredStatus"
         >
+        <br>
+        <!--  adding a server when performing filter operation, this doesn't work bcoz - this
+        may lead to performance issue so if we want to inforce this functionality to work then we shld 
+        add property - pure: false in @Pipe decorator-->
+        <button class="btn btn-primary" (click)="onAddServer()">AddSever</button>
         <hr>
       <ul class="list-group">
         <li
